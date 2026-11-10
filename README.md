@@ -1,48 +1,48 @@
-# E-Commerce UI Automation — Playwright + TypeScript
+# API Automation — REST Assured + TestNG
 
-A maintainable UI automation framework using Playwright Test, TypeScript, Page Object Model, custom fixtures, data separation, cross-browser projects and HTML reporting.
+API automation framework with a reusable client layer, TestNG tests, JSON Schema validation and an importable Postman collection.
 
-## Application
-https://www.saucedemo.com/
+## API under test
+https://jsonplaceholder.typicode.com/
 
-Demo credentials are stored in `test-data/users.ts` and are publicly documented by the demo application. Do not use these patterns for real customer credentials.
+JSONPlaceholder is a public fake REST API. It is intended for testing and prototyping. Write operations return simulated responses and do not persist changes.
 
 ## Prerequisites
-- Node.js 20+
-- npm
+- Java 17+
+- Maven 3.9+
 
-## Setup
+## Run
 ```bash
-npm install
-npx playwright install
+mvn clean test
+```
+Override the API host if needed:
+```bash
+mvn clean test -DbaseUrl=https://jsonplaceholder.typicode.com
 ```
 
-## Execute
-```bash
-npm test
-npm run test:headed
-npm run test:chromium
-npm run typecheck
-npm run report
-```
+## Included coverage
+- GET post by ID
+- Filter posts by user ID
+- POST create representation
+- PUT update representation
+- DELETE response
+- 404 for unknown post
+- JSON Schema contract validation
 
-## Included scenarios
-- Standard user login
-- Locked-out user validation
-- Invalid credentials validation
-- Add product to cart
-- End-to-end checkout
-- Inventory sort price low-to-high
+## Postman
+Import:
+- `postman/JSONPlaceholder-Posts.postman_collection.json`
+- `postman/JSONPlaceholder.postman_environment.json`
+
+Select the `JSONPlaceholder Local` environment and run the collection.
 
 ## Framework design
-- `pages/`: page objects and reusable UI actions
-- `fixtures/`: typed Playwright fixtures
-- `tests/`: independent test specifications
-- `test-data/`: test data
-- `playwright.config.ts`: browser matrix, retries, trace, video, screenshots and reporting
+- `ApiConfig`: centralized base URL
+- `PostsClient`: reusable API request methods
+- `tests/`: endpoint and contract tests
+- `schemas/`: JSON Schema contract
+- `postman/`: manual/API exploration collection
 
-## Engineering notes
-- Prefer role/test-id locators over brittle XPath/CSS where possible.
-- Keep assertions in tests or page-level expectation methods.
-- Keep test data separate from page objects.
-- CI retries are enabled only in CI to reduce local feedback time.
+## Notes
+- Do not put real tokens or secrets in source control.
+- Add negative cases, response-time thresholds, auth scenarios and environment-specific data as required by a real client project.
