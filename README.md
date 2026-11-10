@@ -1,48 +1,129 @@
-# API Automation — REST Assured + TestNG
+# QA Automation Engineer | Automation Testing Portfolio
 
-API automation framework with a reusable client layer, TestNG tests, JSON Schema validation and an importable Postman collection.
+Welcome to my QA Automation Portfolio!
 
-## API under test
-https://jsonplaceholder.typicode.com/
+I am a QA Automation Engineer with 4+ years of experience in Manual Testing, Web Automation and API Testing.
 
-JSONPlaceholder is a public fake REST API. It is intended for testing and prototyping. Write operations return simulated responses and do not persist changes.
+I specialize in building maintainable automation frameworks using Playwright, Selenium WebDriver and REST Assured.
 
-## Prerequisites
-- Java 17+
-- Maven 3.9+
+## Technical Skills
 
-## Run
+- Languages: Java, JavaScript, TypeScript
+- Web Automation: Playwright, Selenium WebDriver
+- API Testing: REST Assured, Postman
+- Frameworks: Page Object Model (POM), Hybrid Framework, Data-Driven Testing
+- Test Frameworks: Playwright Test, TestNG
+- Build Tools: Maven, npm
+- CI/CD: Jenkins, GitHub Actions
+- Version Control: Git, GitHub
+- Test Management: JIRA
+
+## Featured Automation Projects
+
+### 1. Playwright E-commerce Automation
+
+**Technology:** Playwright, TypeScript, Node.js
+
+Folder: `01-playwright-ecommerce`
+
+Key Features:
+- Page Object Model architecture
+- Reusable page classes and test utilities
+- E-commerce functional test automation
+- Login and product validation
+- Cart and checkout scenarios
+- Playwright HTML reporting
+- GitHub Actions CI workflow
+
+Run:
 ```bash
+cd 01-playwright-ecommerce
+npm install
+npx playwright install
+npm test
+```
+
+### 2. Selenium Web UI Automation
+
+**Technology:** Java, Selenium WebDriver, TestNG, Maven
+
+Folder: `02-selenium-web-ui`
+
+Key Features:
+- Selenium WebDriver automation
+- Page Object Model
+- TestNG test execution
+- Maven dependency management
+- Reusable automation components
+- Extent Reports
+
+Run:
+```bash
+cd 02-selenium-web-ui
 mvn clean test
 ```
-Override the API host if needed:
+
+### 3. REST API Automation
+
+**Technology:** Java, REST Assured, TestNG, Maven
+
+Folder: `03-api-automation`
+
+Key Features:
+- REST API automation
+- GET, POST, PUT and DELETE requests
+- API response validation
+- JSON schema validation
+- Reusable API client
+- TestNG execution
+
+Run:
 ```bash
-mvn clean test -DbaseUrl=https://jsonplaceholder.typicode.com
+cd 03-api-automation
+mvn clean test
 ```
 
-## Included coverage
-- GET post by ID
-- Filter posts by user ID
-- POST create representation
-- PUT update representation
-- DELETE response
-- 404 for unknown post
-- JSON Schema contract validation
+## Testing Expertise
 
-## Postman
-Import:
-- `postman/JSONPlaceholder-Posts.postman_collection.json`
-- `postman/JSONPlaceholder.postman_environment.json`
+- Functional Testing
+- Regression Testing
+- Smoke Testing
+- Sanity Testing
+- Integration Testing
+- API Testing
+- UI Automation
+- Cross-browser Testing
+- Defect Reporting and Tracking
 
-Select the `JSONPlaceholder Local` environment and run the collection.
+## CI/CD Integration
 
-## Framework design
-- `ApiConfig`: centralized base URL
-- `PostsClient`: reusable API request methods
-- `tests/`: endpoint and contract tests
-- `schemas/`: JSON Schema contract
-- `postman/`: manual/API exploration collection
+GitHub Actions workflows are configured under:
 
-## Notes
-- Do not put real tokens or secrets in source control.
-- Add negative cases, response-time thresholds, auth scenarios and environment-specific data as required by a real client project.
+`.github/workflows/`
+
+These workflows are designed to execute automation tests on repository updates and pull requests.
+
+## Repository Structure
+
+```text
+QA_Automation_Portfolio/
+|
+|-- 01-playwright-ecommerce/
+|-- 02-selenium-web-ui/
+|-- 03-api-automation/
+|-- .github/
+|   |-- workflows/
+|-- .gitignore
+|-- .env.example
+|-- README.md
+```
+
+## My Goal
+
+To help businesses improve software quality through reliable, scalable and maintainable test automation solutions.
+
+**Open to Freelance QA Automation Projects and Remote Opportunities.**
+
+---
+
+**GitHub:** https://github.com/akhileshyadavwebautomation-cmd
