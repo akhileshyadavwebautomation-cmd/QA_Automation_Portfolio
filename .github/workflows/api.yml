@@ -39,3 +39,19 @@ jobs:
 
       - name: Run Maven tests
         run: mvn -B clean test
+        
+      - name: Generate TestNG HTML Report
+        if: always()
+        run: mvn surefire-report:report
+
+      - name: Upload API Test Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-reports
+          path: |
+            03-api-automation/target/surefire-reports/
+            03-api-automation/target/site/surefire-report.html
+          if-no-files-found: warn
+          retention-days: 14
+
