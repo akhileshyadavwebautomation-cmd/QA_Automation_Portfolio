@@ -1,3 +1,4 @@
+
 import { expect, Locator, Page } from '@playwright/test';
 
 export class LoginPage {
@@ -25,5 +26,9 @@ export class LoginPage {
 
   async expectError(message: string) {
     await expect(this.errorMessage).toContainText(message);
+  }
+
+  async expectSuccessfulLogin() {
+    await expect(this.page).toHaveURL(/inventory/);
   }
 }
