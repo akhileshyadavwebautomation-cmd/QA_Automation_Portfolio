@@ -1,22 +1,49 @@
+
 import { test, expect } from '../fixtures/test-fixtures';
 import { users } from '../test-data/users';
 
-test.describe('Login', () => {
-  test('standard user can log in', async ({ loginPage, inventoryPage }) => {
+test.describe('Login Functionality', () => {
+
+  test.beforeEach(async ({ loginPage }) => {
     await loginPage.goto();
-    await loginPage.login(users.standard.username, users.standard.password);
-    await inventoryPage.expectLoaded();
   });
 
-  test('locked user sees an error', async ({ loginPage }) => {
-    await loginPage.goto();
-    await loginPage.login(users.locked.username, users.locked.password);
-    await loginPage.expectError('Sorry, this user has been locked out');
-  });
+  test('TC_LOGIN_001 - Standard user can log in',
+    async ({ loginPage, inventoryPage }) => {
 
-  test('invalid credentials show an error', async ({ loginPage }) => {
-    await loginPage.goto();
-    await loginPage.login(users.invalid.username, users.invalid.password);
-    await expect(loginPage.errorMessage).toBeVisible();
-  });
+      await loginPage.login(
+        users.standard.username,
+        users.standard.password
+      );
+
+      await inventoryPage.expectLoaded();
+    }
+  );
+
+  test('TC_LOGIN_002 - Locked user sees error',
+    async ({ loginPage }) => {
+
+      await loginPage.login(
+        users.locked.username,
+        users.locked.password
+      );
+
+      await loginPage.expectError(
+        'Sorry, this user has been locked out'
+      );
+    }
+  );
+
+  test('TC_LOGIN_003 - Invalid credentials show error',
+    async ({ loginPage }) => {
+
+      await loginPage.login(
+        users.invalid.username,
+        users.invalid.password
+      );
+
+      await expect(loginPage.errorMessage).toBeVisible();
+    }
+  );
+
 });
